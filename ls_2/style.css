@@ -1,0 +1,28 @@
+/* селектор {свойство: значение} */
+/* тег */
+h2{
+    background: deeppink;
+}
+
+/* класс  */
+.p-1{
+    background: aqua;
+    font-size: 32pt;
+    color: brown;
+}
+.p-2{
+    /* граница (овбодка) */
+    border: 10px solid purple;
+    border-radius: 5px;
+    font-size: 24pt;
+    /* внешний отступ */
+    margin-bottom: 60px;
+    /* внутренний отступ */
+    padding-bottom: 60px;
+    padding-left: 20px;
+}
+.p-3{
+    font-weight: bold;
+    font-size: 22pt;
+    font-family: 'Times New Roman', Times, serif;
+}
