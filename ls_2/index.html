@@ -8,6 +8,41 @@
             background: deeppink;
         }
     </style> -->
+    <style>
+        .container{
+            background: red;
+            display: flex;
+            /* настройки для внутренних блоков */
+            /* ориентация */
+            flex-direction: row;
+            /* перенос */
+            flex-wrap: wrap;
+            /* расположение по ox */
+            /* justify-content: space-between;    */
+            height: 500px;
+        }
+        .box{
+            background: blue;
+            width: 100px;
+            height: 100px;
+            /* разделение внешнее - margin */
+            margin: 10px;
+        }
+        .item1{
+            flex-grow: 2;
+            /* расположение по oy */
+            align-self: flex-start;
+        }
+        .item2{
+            flex-grow: 2;
+            align-self: center;
+        }
+        .item3{
+            flex-grow: 6;
+            align-self: flex-end;
+        }
+        
+    </style>
 
     <link rel="stylesheet" href="style.css">
 
@@ -90,6 +125,27 @@
         <li>Второй элемент</li>
         <li>Третий элемент</li>
     </ol>
+
+    <div class="container"> 
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box item1">11</div>
+        <div class="box item2">21</div>
+        <div class="box item3">31</div>
+    </div>
 
 </body>
 </html>
