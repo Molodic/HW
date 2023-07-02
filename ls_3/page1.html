@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Подключение bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+<body>
+    <h1>Page 1</h1>
+    <!-- ссылка -->
+    <a href="page2.html" target="_blank">Страница 2</a>
+
+    <!-- input - поля формы -->
+    <form action="">
+        <!-- label связывем с input -->
+        <label for="f1">Простое текстовое поле</label>
+        <input class="form-control form-control-sm" id="f1" type="text">
+
+        <label for="f2"> checkbox</label>
+        <input class="form-check-input" id="f2" type="checkbox" role="switch">
+
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
+          </div>
+        
+        <label for="f3"> password</label>
+        <input id="f3" type="password">
+
+        <input class="btn btn-success" type="button" value="send" style="--bs-btn-padding-y: .30rem; --bs-btn-padding-x: .9rem; --bs-btn-font-size: .99rem;">
+
+
+    </form>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <form style="padding-top: 100px;">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Адрес электронной почты</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <div id="emailHelp" class="form-text">Мы никогда никому не передадим вашу электронную почту.</div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Пароль</label>
+          <input type="password" class="form-control" id="exampleInputPassword1">
+        </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Проверить меня</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Отправить</button>
+      </form>
+</body>
+</html>
