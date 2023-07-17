@@ -3,5 +3,8 @@ from django.http import HttpResponse
 
 # Create your views here.
 
-def indeh(requests):
-    return HttpResponse('Домашка по 4 занятию')
+def indeh(request):
+    return render(request, 'index.html')
+
+def top_sellers(request):
+    return render(request, 'top-sellers.html')

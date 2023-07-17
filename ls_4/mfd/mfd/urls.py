@@ -19,6 +19,5 @@ from django.urls import path, include, re_path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('app_lesson_4.urlsm')),
-    path('', include('dj.urls')) #подтягиваем папку urls, в которой держим функцию из views
+    path('', include('app_lesson_4.urlsm')) #подтягиваем папку urls, в которой держим функцию из views
 ]

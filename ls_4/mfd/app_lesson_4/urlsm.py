@@ -1,7 +1,8 @@
 from django.urls import path
-from .views import indeh#, post_detail
+from .views import indeh, top_sellers#, post_detail
 
 urlpatterns = [
-    path('lesson_4/', indeh, name='indeh'),
+    path('', indeh, name='main-page'),
+    path('top-sellers', top_sellers, name='top-sellers')
     #path('post/<int:pk>/', post_detail, name='post_detail'),
 ]
