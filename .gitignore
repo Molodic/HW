@@ -1,0 +1,5 @@
+.vscode
+MyPostgres.session.sql
+*.sqlite3
+*log
+*~
