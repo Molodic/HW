@@ -4,10 +4,10 @@ from django.utils.html import format_html
 from django.utils import timezone
 # Create your models here.
 class Advertisement(models.Model): 
-    title: str = models.CharField("Заголовок", max_length=128)
-    description: str = models.TextField("Описание")
-    price: float = models.DecimalField("Цена", max_digits=10, decimal_places=2)
-    tradePossibility: bool =  models.BooleanField("Торга", help_text="Отметьте, уместен ли торг")
+    title = models.CharField("Заголовок", max_length=128)
+    description = models.TextField("Описание")
+    price = models.DecimalField("Цена", max_digits=10, decimal_places=2)
+    tradePossibility =  models.BooleanField("Торга", help_text="Отметьте, уместен ли торг")
     timeOfCreate = models.DateTimeField(verbose_name='Время создания',auto_now_add = True)
     timeOfUpdate = models.DateTimeField(verbose_name='Время обновления', auto_now = True)
     
