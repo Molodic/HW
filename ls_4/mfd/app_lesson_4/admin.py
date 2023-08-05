@@ -4,7 +4,7 @@ from django.db import models #For decimal.Decimal class
 
 # Register your models here.
 class AdvertisementAdmin(admin.ModelAdmin):
-    list_display = ['id', 'title', 'description', 'price', 'tradePossibility', 'createdDate', 'timeOfUpdate']
+    list_display = ['id', 'title', 'description', 'price', 'tradePossibility', 'createdDate', 'updatedDate']
     list_filter = ['tradePossibility', 'timeOfCreate']
     list_editable = ['title', 'price', 'tradePossibility']
     actions = ['make_trade_False', 'make_trade_True', 'sale']
