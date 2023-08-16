@@ -42,10 +42,9 @@ class Advertisement(models.Model):
             return format_html(
                 f"<img src='{settings.MEDIA_URL}{self.image}' style='width: 70px; height = 45px;' />"
             )
-        else:
-            return format_html(
-                "<span style='opacity: 0.5;'>NO IMAGE</span>"
-            )
+        return format_html(
+            "<span style='opacity: 0.5;'>NO IMAGE</span>"
+        )
 
     class Meta:
         db_table = "advertisements"
