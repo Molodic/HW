@@ -2,6 +2,11 @@ from django.db import models
 from django.contrib import admin
 from django.utils.html import format_html
 from django.utils import timezone
+from django.contrib.auth import get_user_model
+from django.conf import settings
+
+User = get_user_model()
+
 # Create your models here.
 class Advertisement(models.Model): 
     title = models.CharField("Заголовок", max_length=128)
@@ -10,6 +15,8 @@ class Advertisement(models.Model):
     tradePossibility =  models.BooleanField("Торга", help_text="Отметьте, уместен ли торг")
     timeOfCreate = models.DateTimeField(verbose_name='Время создания',auto_now_add = True)
     timeOfUpdate = models.DateTimeField(verbose_name='Время обновления', auto_now = True)
+    author = models.ForeignKey(User, verbose_name="Пользователь", on_delete=models.CASCADE)#, default=models.ForeignKey(AdvertisementAdmin, verbose_name="Пользователь", on_delete=models.CASCADE))
+    image = models.ImageField("Изображение", upload_to="advertisements/")
     
     @admin.display(description="Дата создания")
     def createdDate(self):
@@ -23,11 +30,23 @@ class Advertisement(models.Model):
     @admin.display(description="Дата обновления")
     def updatedDate(self):
         created_time = self.timeOfUpdate.strftime('%H:%M:%S')
-        if timezone.now().date() == self.timeOfUpdate.date():
+        if self.timeOfUpdate.date() == timezone.now().date():
             return format_html(
                 f"<span style='color: #4682B4; font-weight: bold;'>Сегодня в {created_time}</span>"
             )
         return self.timeOfUpdate.strftime('%d.%m.%Y')
+    
+    @admin.display(description="Изображение")
+    def miniImage(self):
+        if self.image:
+            return format_html(
+                f"<img src='{settings.MEDIA_URL}{self.image}' style='width: 70px; height = 45px;' />"
+            )
+        else:
+            return format_html(
+                "<span style='opacity: 0.5;'>NO IMAGE</span>"
+            )
+
     class Meta:
         db_table = "advertisements"
 

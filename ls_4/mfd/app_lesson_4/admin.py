@@ -4,13 +4,13 @@ from django.db import models #For decimal.Decimal class
 
 # Register your models here.
 class AdvertisementAdmin(admin.ModelAdmin):
-    list_display = ['id', 'title', 'description', 'price', 'tradePossibility', 'createdDate', 'updatedDate']
+    list_display = ['id', 'title', 'description', 'price', 'tradePossibility', 'createdDate', 'updatedDate', "miniImage"]
     list_filter = ['tradePossibility', 'timeOfCreate']
     list_editable = ['title', 'price', 'tradePossibility']
     actions = ['make_trade_False', 'make_trade_True', 'sale']
     fieldsets = (
         ('Общие', {
-            'fields' : ('title', 'description')
+            'fields' : ("author", 'title', 'description', "miniImage")
         }), 
         ('Финансы', {
             'fields' : ('price', 'tradePossibility'),
@@ -30,7 +30,7 @@ class AdvertisementAdmin(admin.ModelAdmin):
         for obj in queryset:
             obj.save()
 
-    @admin.action(description='Скидка 17 процентов')
+    @admin.action(description='Скидка 17 процентов (-2 рубля)')
     def sale(self, request, queryset):
         for obj in queryset:
             #print(queryset[0].price-2, float(round(queryset[0].price*0.83, 2)), '---------------------------------------------------------')

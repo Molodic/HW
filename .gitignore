@@ -7,6 +7,8 @@ __pycache__/
 *.pyd
 *.swp
 ls_4/mfd/mfd/settings.py
-static
+static/
+media/
+logs/
 *log
 *~
