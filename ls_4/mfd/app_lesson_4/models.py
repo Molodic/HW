@@ -30,7 +30,7 @@ class Advertisement(models.Model):
     timeOfCreate = models.DateTimeField(verbose_name='Время создания',auto_now_add = True)
     timeOfUpdate = models.DateTimeField(verbose_name='Время обновления', auto_now = True)
     author = models.ForeignKey(User, verbose_name="Пользователь", on_delete=models.CASCADE)#, default=models.ForeignKey(AdvertisementAdmin, verbose_name="Пользователь", on_delete=models.CASCADE))
-    image = models.ImageField("Изображение", upload_to="advertisements/", blank=True)
+    image = models.ImageField("Изображение", upload_to="advertisements/")
     
     @admin.display(description="Дата создания")
     def createdDate(self):
