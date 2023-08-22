@@ -23,7 +23,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('app_lesson_4.urlsm')) #подтягиваем папку urls, в которой держим функцию из views
+    path('', include('app_lesson_4.urlsm')) #подтягиваем папку urls, в которой держим функции из views
 ]
 # urlpatterns += i18n_patterns(
 #     path("/ru/admin/", include(admin.site.urls))

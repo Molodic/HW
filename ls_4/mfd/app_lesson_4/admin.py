@@ -10,7 +10,7 @@ class AdvertisementAdmin(admin.ModelAdmin):
     actions = ['make_trade_False', 'make_trade_True', 'sale']
     fieldsets = (
         ('Общие', {
-            'fields' : ("author", 'title', 'description', "miniImage")
+            'fields' : ("author", 'title', 'description')
         }), 
         ('Финансы', {
             'fields' : ('price', 'tradePossibility'),
