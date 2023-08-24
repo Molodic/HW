@@ -23,8 +23,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include("app_lesson_4.urlsm")), #подтягиваем папку urls, в которой держим функции из views
-    path("", include("app_authorization.urls"))
+    path("", include("app_lesson_4.urls")), #подтягиваем папку urls, в которой держим функции из views
+    path("myauth/", include("app_authorization.urls")) 
 ]
 # urlpatterns += i18n_patterns(
 #     path("/ru/admin/", include(admin.site.urls))

@@ -1,17 +1,19 @@
-from django.shortcuts import render, reverse, redirect
+from django.shortcuts import render, reverse, redirect #reverse -> from django.urls import reverse
 from django.http import HttpResponse
 from .models import Advertisement
 from .forms import AdvertisementForm
 
 # Create your views here.
 
+TEMPL_ROOT = "app_lesson_4/"
+
 def index(request):
     advertisements = Advertisement.objects.all() #Всё из таблицы Advertisement
     context = {"advertisements" : advertisements} 
-    return render(request, 'index.html', context)
+    return render(request, TEMPL_ROOT+"index.html", context)
 
 def top_sellers(request):
-    return render(request, 'top-sellers.html')
+    return render(request, TEMPL_ROOT+"top-sellers.html")
 
 def advertisement_post(request):
     if request.method == "POST":
@@ -29,4 +31,4 @@ def advertisement_post(request):
     else:
         form = AdvertisementForm()
     context = {"form" : form}
-    return render(request, "advertisement-post.html", context)
+    return render(request, TEMPL_ROOT+"advertisement-post.html", context)

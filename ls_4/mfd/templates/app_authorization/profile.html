@@ -1,0 +1,24 @@
+{% extends "a_base.html" %}
+{% load static %}
+
+{% block title %}
+Профиль
+{% endblock %}
+
+{% block profile %}
+active
+{% endblock %}
+
+{% block content %}
+<div class="col" style="margin: 50px;">
+  <div class="display-2">
+    <span class="badge bg-primary">
+      {% if req.user %}
+      Сейчас вы находитесь на сайте под ником "{{req.user}}".
+      {% else %}
+      Вы не зарегистрированы в системе.
+      {% endif %}
+    </span>
+  </div>
+</div>
+{% endblock %}

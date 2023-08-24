@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import Advertisement
-from django.db import models #For decimal.Decimal class
+from django.db import models 
+from decimal import Decimal #For decimal.Decimal class
 
 # Register your models here.
 class AdvertisementAdmin(admin.ModelAdmin):
@@ -33,10 +34,10 @@ class AdvertisementAdmin(admin.ModelAdmin):
     @admin.action(description='Скидка 17 процентов (-2 рубля)')
     def sale(self, request, queryset):
         for obj in queryset:
-            #print(queryset[0].price-2, float(round(queryset[0].price*0.83, 2)), '---------------------------------------------------------')
-            queryset.update(price = obj.price - 2)
+            print(obj)
+            obj.price = Decimal(round(float(obj.price) * 0.83, 1)-0.01)
             obj.save()
 
-    sale.short_description = "Распродажа!"
+    sale.short_description = f"Распродажа!" 
 
 admin.site.register(Advertisement, AdvertisementAdmin)
