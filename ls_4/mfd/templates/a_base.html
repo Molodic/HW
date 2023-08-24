@@ -29,17 +29,17 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link {% block register %}{% endblock %}" href="register.html">
+      <a class="nav-link {% block register %}{% endblock %}" href="{% url 'register' %}">
         <span style="font-weight: bold;">Регистрация</span>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link {% block login %}{% endblock %}" href="login.html">
+      <a class="nav-link {% block login %}{% endblock %}" href="{% url 'login' %}">
         <span style="font-weight: bold;">Войти</span>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link {% block profile %}{% endblock %}" href="profile.html">
+      <a class="nav-link {% block profile %}{% endblock %}" href="{% url 'profile' %}">
         <span style="font-weight: bold;">Профиль</span>
       </a>
     </li>

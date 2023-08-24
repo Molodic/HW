@@ -5,7 +5,7 @@ from .forms import AdvertisementForm
 
 # Create your views here.
 
-def indeh(request):
+def index(request):
     advertisements = Advertisement.objects.all() #Всё из таблицы Advertisement
     context = {"advertisements" : advertisements} 
     return render(request, 'index.html', context)

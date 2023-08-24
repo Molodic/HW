@@ -8,14 +8,13 @@ class AdvertisementForm(forms.ModelForm):
 
     title = forms.CharField(label="Заголовок", max_length=64, widget=forms.TextInput(attrs={"class": "form-control form-control-lg"}),
                             validators = [RegexValidator(regex=regularExpressionForTitle, inverse_match=True, message=_("В начале спец-символ."))])
-    tradePossibility = forms.BooleanField(label="Торг", required=False, widget=forms.CheckboxInput(attrs={"class": "form-check-input"}))
     class Meta:
         model = Advertisement
         fields = ["title", "description", "price", "tradePossibility", "image"]
         widgets = {
-            "title": forms.TextInput(attrs={"class": "form-control form-control-lg"}),
+            "title": forms.TextInput(attrs={"class": "form-control form-control-lg"}), #Overload later
             "description": forms.Textarea(attrs={"class": "form-control form-control-lg", "rows": 3}),
             "price": forms.NumberInput(attrs={"class": "form-control form-control-lg"}),
-            "tradePossibility": forms.CheckboxInput(attrs={"class": "form-check-input"}),
+            "tradePossibility": forms.CheckboxInput(attrs={"class": "form-check-input"}), 
             "image": forms.FileInput(attrs={"class": "form-control form-control-lg"})
         }
