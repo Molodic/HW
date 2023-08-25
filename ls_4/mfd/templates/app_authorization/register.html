@@ -12,9 +12,9 @@ active
 {% block content %}
   <div class="container">
   <div class="row">
-    <div class="col" style="margin: 50px;">
+    <div class="col" style="margin: 50px; margin-top: 10px; margin-bottom: 5px;">
       <div class="display-2">
-        <span class="badge bg-primary">Страница регистрации пользователя</span>
+        <span class="badge bg-primary" style="margin-top: 5px; margin-bottom: 5px;">Страница регистрации пользователя</span>
       </div>
     </div>
   </div>
@@ -24,7 +24,7 @@ active
         <div class="col">
           <label class="col-sm-4 col-form-label offset-4">Username</label>
           <div class="col-sm-4 offset-4 w-25">
-            <input name="username" id="username" type="text" class="form-control form-control-lg">
+            <input name="username" id="id_username" type="text" class="form-control form-control-lg" required>
           </div>
         </div>
       </div>
@@ -32,7 +32,7 @@ active
         <div class="col">
           <label class="col-sm-4 col-form-label offset-4">Name</label>
           <div class="col-sm-4 offset-4 w-25">
-            <input name="name" id="name" type="text" class="form-control form-control-lg">
+            <input name="first_name" id="id_first_name" type="text" class="form-control form-control-lg" required>
           </div>
         </div>
       </div>
@@ -40,7 +40,7 @@ active
         <div class="col">
           <label class="col-sm-4 col-form-label offset-4">Surname</label>
           <div class="col-sm-4 offset-4 w-25">
-            <input name="surname" id="surname" type="text" class="form-control form-control-lg">
+            <input name="last_name" id="id_last_name" type="text" class="form-control form-control-lg" required>
           </div>
         </div>
       </div>
@@ -48,20 +48,33 @@ active
         <div class="col">
           <label class="col-sm-4 col-form-label offset-4">Password</label>
           <div class="col-sm-4 offset-4 w-25">
-            <input name="password" id="password" type="password" class="form-control form-control-lg">
+            <input name="password1" id="id_password1" type="password" class="form-control form-control-lg" required>
           </div>
         </div>
       </div>
-      <div class="row mb-3">
+      <div class="row mb-3" style="margin-bottom: 0px !important;">
         <div class="col">
           <label class="col-sm-4 col-form-label offset-4">Password confirmation</label>
           <div class="col-sm-4 offset-4 w-25">
-            <input name="passwordcorrect" id="passwordcorrect" type="password" class="form-control form-control-lg">
-            <div class="form-label bg-warning" style="margin: 10px 0px;">Ошибка (если будет)</div>
+            <input name="password2" id="id_password2" type="password" class="form-control form-control-lg" required>
+            <div class="form-label bg-warning" 
+                style="margin: 10px 0px; 
+                      background-color: #ffee00 !important; 
+                      padding: 2px; 
+                      font-size: 14px; 
+                      border-radius: 4px;">
+              {% if error %}
+              {% for error_exact in error %}
+              <p style="color: rgb(197, 30, 30); margin-left: 2px;">{{error_exact}}</p>
+              {% endfor %}
+              {% else %}
+              Ошибка (если будет)
+              {% endif %}
+            </div>
           </div>
         </div>
       </div>
-      <div class="row mb-3 offset-sm-5">
+      <div class="row mb-3 offset-sm-5" style="margin-bottom: 0px !important;">
         <div class="col">
           <button type="submit" class="btn btn-success">Принять</button>
         </div>

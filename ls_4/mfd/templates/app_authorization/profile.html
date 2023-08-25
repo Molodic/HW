@@ -14,7 +14,7 @@ active
   <div class="display-2">
     <span class="badge bg-primary">
       {% if req.user %}
-      Сейчас вы находитесь на сайте под ником "{{req.user}}".
+      Привет, {{req.user}}!
       {% else %}
       Вы не зарегистрированы в системе.
       {% endif %}

@@ -3,6 +3,9 @@ from django.http import HttpResponse
 from .models import Advertisement
 from .forms import AdvertisementForm
 
+from django.contrib.auth.decorators import login_required
+from django.urls import reverse_lazy
+
 # Create your views here.
 
 TEMPL_ROOT = "app_lesson_4/"
@@ -15,6 +18,7 @@ def index(request):
 def top_sellers(request):
     return render(request, TEMPL_ROOT+"top-sellers.html")
 
+@login_required(login_url=reverse_lazy("login"))
 def advertisement_post(request):
     if request.method == "POST":
         form = AdvertisementForm(request.POST, request.FILES)
