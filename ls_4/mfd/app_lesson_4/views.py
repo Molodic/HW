@@ -6,13 +6,20 @@ from .forms import AdvertisementForm
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 
+import random
+
 # Create your views here.
 
 TEMPL_ROOT = "app_lesson_4/"
 
 def index(request):
-    advertisements = Advertisement.objects.all() #Всё из таблицы Advertisement
-    context = {"advertisements" : advertisements} 
+    advertisements = list(Advertisement.objects.all()) #Всё из таблицы Advertisement
+    random.shuffle(advertisements)
+    scrollAdvertisements = advertisements[:3]
+    firstadver = scrollAdvertisements[0] #For aplications
+    context = {"advertisements" : advertisements, 
+               "scrollAdvertisements" : scrollAdvertisements, 
+               "firstadver": firstadver} 
     return render(request, TEMPL_ROOT+"index.html", context)
 
 def top_sellers(request):

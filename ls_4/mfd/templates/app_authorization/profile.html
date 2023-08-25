@@ -19,6 +19,9 @@ active
       Вы не зарегистрированы в системе.
       {% endif %}
     </span>
+    {% if req.user.is_superuser %}
+    <h1 style="margin-top: 20px; margin-left: 20px;"><a href="http://127.0.0.1:8000/admin/">Панель администирования сайтом.</a></h1>
+    {% endif   %}
   </div>
 </div>
 {% endblock %}

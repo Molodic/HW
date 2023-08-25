@@ -33,20 +33,6 @@ def register(request):
 
         print(form.errors.as_text())
         context["error"] = form.errors.as_text().replace("password2","").split("*")[2:]
-    #     error = form.is_not_valid_person()
-
-    #     #Нет ошибок
-    #     if not error: 
-    #         user = form.save(commit=True) #commit=True - не обязательно (default), но в напоминание!
-    #         login(request, user)
-    #         return redirect(reverse_lazy("profile"))
-        
-    #     #Есть ошибки
-    #     if type(error) == tuple: #Такой пользователь уже существует
-    #         context["error"] = error[0]
-    #         redirect(login_view)
-
-    #     context["error"] = error
 
     return render(request, TEML_ROOT+"register.html", context)
 

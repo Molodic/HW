@@ -10,18 +10,27 @@ active
 {% endblock %}
 
 {% block content %}
+<style>
+  div.carousel-item {
+    display: none !important;
+  }
+  div.carousel-item.active {
+    display: flex !important;
+  }
+</style>
 <div id="carouselExampleControls" class="carousel slide bg-primary" data-bs-ride="carousel">
+  {% for adver in scrollAdvertisements %}
   <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="{% static 'img/image.png' %}" class="mx-auto d-block w-33" alt="My image">
-    </div>
-    <div class="carousel-item">
-      <img src="{% static 'img/image.png' %}" class="mx-auto d-block w-33" alt="My image">
-    </div>
-    <div class="carousel-item">
-      <img src="{% static 'img/image.png' %}" class="mx-auto d-block w-33" alt="My image">
+    <div class="carousel-item{% if adver == firstadver %} active{% endif %}" style="height: 512px; display: flex;">
+      <img src="
+      {% if adver.image %}
+      {{ adver.image.url }}
+      {% else %}
+      {% static 'img/image.png' %}
+      {% endif %}" class="mx-auto d-block w-33" alt="My image" style="max-height: 512px; max-width: 512px; object-fit: contain; align-self: center;">
     </div>
   </div>
+  {% endfor %}
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Предыдущий</span>
@@ -125,4 +134,30 @@ active
     </div>
   </nav>
 </footer>
+<script>
+  function changeCarouselIcon(direction) {
+    // print(allItems)
+    const curItem = document.querySelector("div.carousel-item.active")
+    const indexCurItem = allItems.indexOf(curItem)
+    curItem.classList.toggle("active")
+    
+    switch (direction) {
+      case "prev":
+        let indexPrevSpan = indexCurItem - 1;
+        allItems[ indexPrevSpan < 0 ? allItems.length-1 : indexPrevSpan].classList.add("active");
+        break;
+      case "next":
+        let indexNextSpan = indexCurItem + 1;
+        allItems[ indexNextSpan ==  allItems.length ? 0 : indexNextSpan].classList.add("active");
+        break;
+    }
+  }
+
+  const allItems = Array.from(document.querySelectorAll("div.carousel-item"))
+  const prevIconButton = document.querySelector("button.carousel-control-prev");
+  const nextIconButton = document.querySelector("button.carousel-control-next");
+
+  prevIconButton.addEventListener("click", () => changeCarouselIcon("prev"))
+  nextIconButton.addEventListener("click", () => changeCarouselIcon("next"))
+</script>
 {% endblock %}
