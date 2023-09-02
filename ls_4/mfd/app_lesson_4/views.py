@@ -1,7 +1,13 @@
-from django.shortcuts import render, reverse, redirect #reverse -> from django.urls import reverse
+from django.shortcuts import render, redirect #reverse -> from django.urls import reverse
+from django.urls import reverse
 from django.http import HttpResponse
 from .models import Advertisement
 from .forms import AdvertisementForm
+from django.db.models import Count
+
+from django.contrib.auth.models import User
+# from django.contrib.auth import get_user_model
+# User = get_user_model()
 
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
@@ -12,18 +18,40 @@ import random
 
 TEMPL_ROOT = "app_lesson_4/"
 
+
 def index(request):
     advertisements = list(Advertisement.objects.all()) #Всё из таблицы Advertisement
+
     random.shuffle(advertisements)
     scrollAdvertisements = advertisements[:3]
     firstadver = scrollAdvertisements[0] #For aplications
+
+    title = request.GET.get("search")
+    print(request.GET.get("search"), "--------------")
+    if title: #Если есть запрос
+        advertisements = Advertisement.objects.filter(title__icontains = title)
+
     context = {"advertisements" : advertisements, 
                "scrollAdvertisements" : scrollAdvertisements, 
-               "firstadver": firstadver} 
+               "firstadver": firstadver,
+               "title":title} 
     return render(request, TEMPL_ROOT+"index.html", context)
 
+def advetrisements_detail(request, id):
+    advertisement = Advertisement.objects.get(id=id)
+    context = {
+        "adv" : advertisement
+    }
+    return render(request, TEMPL_ROOT+"advertisement.html", context)
+
 def top_sellers(request):
-    return render(request, TEMPL_ROOT+"top-sellers.html")
+    users = User.objects.annotate(
+        adv_count = Count("advertisement")
+    ).order_by("-adv_count")
+    context = {
+        "best_authors": users if len(users) < 10 else list(users)[:10]
+    }
+    return render(request, TEMPL_ROOT+"top-sellers.html", context)
 
 @login_required(login_url=reverse_lazy("login"))
 def advertisement_post(request):

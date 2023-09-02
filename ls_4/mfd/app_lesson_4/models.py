@@ -3,8 +3,9 @@ from django.db import models
 from django.contrib import admin
 from django.utils.html import format_html
 from django.utils import timezone
-from django.contrib.auth import get_user_model
 from django.conf import settings
+from django.urls import reverse
+from django.contrib.auth import get_user_model
 
 from django.core.validators import MinValueValidator
 from decimal import Decimal
@@ -67,3 +68,6 @@ class Advertisement(models.Model):
         name = str(self.__class__)
         index = len(name) - name[::-1].find('.')
         return f"{name[index:-2]}(id={self.id}, author={self.author}, title={self.title}, price={self.price}, tradePossibility={self.tradePossibility}, image={self.image})"
+    
+    def get_absolute_url(self):
+        return reverse("advertisement", kwargs={"id": self.id})
